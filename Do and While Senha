@@ -1,0 +1,21 @@
+package javaapplication1;
+
+import javax.swing.JOptionPane;
+
+public class WhileSenha {
+
+    public static void main(String[] args) {
+        
+        String senha = JOptionPane.showInputDialog("Criar senhar ");
+        String senhaDigitada = "";
+        
+        
+        do{
+           senhaDigitada = JOptionPane.showInputDialog("Digite a senha ");
+        }while(!senhaDigitada.equals(senha));
+        
+        JOptionPane.showMessageDialog(null,"Seja Bem Vindo!");
+
+    }
+
+}
