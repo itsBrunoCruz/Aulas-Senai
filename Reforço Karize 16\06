@@ -1,0 +1,57 @@
+package aulareforçokarize;
+
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
+public class Exercicio02 {
+
+    public static void main(String[] args) {
+        float salario = 0.0f, somaSalario = 0.0f;
+        int quantidadeFilhos = 0;
+        float contadorSalario = 0;
+        float mediaSalario = 0;  
+        float somaFilhos = 0, contadorFilhos = 0, mediaFilhos = 0;
+        float maiorSalario = 0.0f, percentualSalario = 0.0f;
+        int op = 1;
+        
+        DecimalFormat df  =  new DecimalFormat("R$ #,##0.00");
+        DecimalFormat dfFilhos  =  new DecimalFormat("#.##");
+
+        do {
+
+            salario = Float.parseFloat(JOptionPane.showInputDialog("Informe o seu salário: "));
+            if (salario != -1) {
+                somaSalario += salario;
+                contadorSalario++;
+
+            }
+
+            quantidadeFilhos = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos filhos você tem: "));
+            if (quantidadeFilhos != -1) {
+                somaFilhos += quantidadeFilhos;
+                contadorFilhos++;
+
+            }
+            
+            if(salario > maiorSalario){
+                maiorSalario = salario;
+            }
+            
+            if(salario <= 100){
+          
+            }
+            
+            op = Integer.parseInt(JOptionPane.showInputDialog("Deseja continuar? sim = 1, não = 0"));
+            
+
+        } while (op == 1);
+        mediaSalario = somaSalario / contadorSalario;
+        mediaFilhos = somaFilhos / contadorFilhos;
+
+        JOptionPane.showMessageDialog(null, "Média salarial é de R$: " + df.format(mediaSalario));
+        JOptionPane.showMessageDialog(null, "Média de filhos é de: " + dfFilhos.format(mediaFilhos));
+        JOptionPane.showMessageDialog(null, "Maior salário: "+ maiorSalario);
+        JOptionPane.showMessageDialog(null, "Percentual de salário até 100: "+ percentualSalario);
+
+    }
+}
