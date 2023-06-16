@@ -1,0 +1,25 @@
+package aulareforçokarize;
+
+import javax.swing.JOptionPane;
+
+public class Exercicio01 {
+    
+    //Peça 5 valores para "A" e informe quantos valores digitados são impares
+
+    public static void main(String[] args) {
+        int numero = 0;
+        int contador = 0;
+
+        for (int i = 0; i < 5; i++) {
+            numero = Integer.parseInt(JOptionPane.showInputDialog("Informe um valor para A: "));
+
+            if (numero % 2 != 0) {
+                contador++;
+            }
+
+        }
+
+        JOptionPane.showMessageDialog(null, "Há " + contador + " números impares");
+
+    }
+}
