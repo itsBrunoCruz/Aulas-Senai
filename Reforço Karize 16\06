@@ -3,19 +3,18 @@ package aulareforçokarize;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
-public class Exercicio02 {
+public class Aulareforçokarize {
 
     public static void main(String[] args) {
-        float salario = 0.0f, somaSalario = 0.0f;
-        int quantidadeFilhos = 0;
-        float contadorSalario = 0;
-        float mediaSalario = 0;  
-        float somaFilhos = 0, contadorFilhos = 0, mediaFilhos = 0;
-        float maiorSalario = 0.0f, percentualSalario = 0.0f;
         int op = 1;
-        
-        DecimalFormat df  =  new DecimalFormat("R$ #,##0.00");
-        DecimalFormat dfFilhos  =  new DecimalFormat("#.##");
+        float salario = 0.0f, somaSalario = 0.0f, contadorSalario = 0.0f, contadorSalarioAbaixo = 0.0f, mediaSalario = 0.0f, maiorSalario = 0.0f, percentualSalarioAbaixo = 0.0f;
+        int quantidadeFilhos = 0;
+        float somaFilhos = 0, contadorFilhos = 0, mediaFilhos = 0;
+        String pulaLinha = "\n";
+
+        DecimalFormat df = new DecimalFormat("R$ #,##0.00");
+        DecimalFormat dfFilhos = new DecimalFormat("#.##");
+        DecimalFormat dfPorcentagem = new DecimalFormat("#.##");
 
         do {
 
@@ -32,26 +31,29 @@ public class Exercicio02 {
                 contadorFilhos++;
 
             }
-            
-            if(salario > maiorSalario){
+
+            if (salario > maiorSalario) {
                 maiorSalario = salario;
             }
-            
-            if(salario <= 100){
-          
+
+            if (salario <= 100) {
+                contadorSalarioAbaixo++;
+
             }
-            
+
             op = Integer.parseInt(JOptionPane.showInputDialog("Deseja continuar? sim = 1, não = 0"));
-            
 
         } while (op == 1);
+
         mediaSalario = somaSalario / contadorSalario;
         mediaFilhos = somaFilhos / contadorFilhos;
+        percentualSalarioAbaixo = (contadorSalarioAbaixo / contadorSalario) * 100;
 
-        JOptionPane.showMessageDialog(null, "Média salarial é de R$: " + df.format(mediaSalario));
-        JOptionPane.showMessageDialog(null, "Média de filhos é de: " + dfFilhos.format(mediaFilhos));
-        JOptionPane.showMessageDialog(null, "Maior salário: "+ maiorSalario);
-        JOptionPane.showMessageDialog(null, "Percentual de salário até 100: "+ percentualSalario);
+        JOptionPane.showMessageDialog(null,
+                "Média salarial é de R$: " + df.format(mediaSalario) + pulaLinha
+                + "Média de filhos é de: " + dfFilhos.format(mediaFilhos) + pulaLinha
+                + "Maior salário: " + maiorSalario + pulaLinha
+                + "Percentual de salários até R$ 100 é de: " + dfPorcentagem.format(percentualSalarioAbaixo) + "%");
 
     }
 }
