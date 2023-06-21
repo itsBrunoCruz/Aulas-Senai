@@ -1,0 +1,167 @@
+programa
+{
+	inteiro contador = 0
+	inteiro contadorClassificacao = 0
+	cadeia produto[999]
+	cadeia classificacao[999]
+	cadeia pulaLinha = "\n"
+	cadeia acao = ""
+	
+	funcao inicio(){
+		
+		faca{	
+			escreva
+			("Insira a opção desejada: "	+pulaLinha+
+			"(1)Inserir Produto"		+pulaLinha+
+			"(2)Exibir Produtos"		+pulaLinha+
+			"(3)Encerrar Programa"		+pulaLinha+
+			"(4)Excluir"				+pulaLinha+
+			"(5)Atualizar"				+pulaLinha+
+			"(6)Ordenação"				+pulaLinha+
+			"Opção: ")
+			leia(acao)
+
+			se (acao == "1"){
+				inserir()
+			}
+			se (acao == "2"){
+				exibir()
+			}
+			se (acao == "3"){
+				escreva("Programa Encerrado!!")
+			}
+			se (acao == "4"){
+				excluir()
+			}
+			se (acao == "5"){
+				atualizar()
+			}
+			se (acao == "6"){
+				imprimeOrdenado()
+			}
+
+			se (acao == ""){
+				escreva("Nenhum dado inserido!!" + pulaLinha)
+			}
+	
+		}enquanto(acao != "3")
+			
+	}
+
+	funcao inserir(){
+		limpa()
+		cadeia nomeProduto = ""
+		cadeia classificacaoProduto = ""
+		faca{
+			escreva("Informe um produto: "+pulaLinha)
+			leia(nomeProduto)
+
+			se(nomeProduto == ""){
+				escreva("Nome do produto inválido!!"+pulaLinha)
+			}
+				
+		}enquanto(nomeProduto == "")
+		produto[contador] = nomeProduto
+		contador += 1
+
+
+		faca{
+			escreva("Informe uma classificação: "+pulaLinha)
+			leia(classificacaoProduto)
+
+			se(classificacaoProduto == ""){
+				escreva("Classificação inválida!!"+pulaLinha)
+			}
+				
+		}enquanto(classificacaoProduto == "")
+		classificacao[contadorClassificacao] = classificacaoProduto
+		contadorClassificacao += 1
+
+	}
+
+	funcao exibir(){
+		para (inteiro i = 0; i < contador; i++){
+			se(produto[i] != ""){
+			escreva("Produto informado: "+ i + " - " +produto[i]+ pulaLinha)
+
+			}	senao{
+					escreva("")
+				}
+		}
+
+
+		para (inteiro i = 0; i < contadorClassificacao; i++){
+			se(classificacao[i] != ""){
+			escreva("Classificação informada: "+ i + " - " +classificacao[i]+ pulaLinha)
+
+			}	senao{
+					escreva("")
+				}
+		}
+		
+	}
+
+	funcao excluir(){
+		inteiro indice
+
+		escreva("Informe o indice que deseja excluir"+pulaLinha)
+		leia(indice)
+		se(produto[indice] != "" e classificacao[indice] != ""){
+			produto[indice] = ""
+			classificacao[indice] = ""
+		}
+	}
+
+	funcao atualizar(){
+		
+		inteiro indice
+		cadeia nomeAtualizado = ""
+
+		escreva("Que produto deseja atualizar? "+pulaLinha)
+		leia(indice)
+		se(produto[indice] != ""){
+			escreva("Que produto deseja informar?"+pulaLinha)
+			leia(nomeAtualizado)
+
+			enquanto(nomeAtualizado == ""){
+				escreva("Produto inválido"+pulaLinha)
+				escreva("Que produto deseja informar?"+pulaLinha)
+				leia(nomeAtualizado)
+			}
+			
+			se(produto[indice] != ""){
+				produto[indice] = nomeAtualizado
+			}
+		}
+	}
+	funcao imprimeOrdenado(){
+		inteiro ordenacao
+			
+		escreva("Escolha o modo de impressão: "	+pulaLinha+
+		"Crescente (0)" +pulaLinha+
+		"Decrescente(1)"+pulaLinha)
+		leia(ordenacao)
+			
+		se(ordenacao == 0){
+			para (inteiro i = 0; i < contador; i++){
+				se(produto[i] != ""){
+					escreva("Produto informado: "+ i + " - " +produto[i]+ pulaLinha)
+				} senao{
+					escreva("")
+					}
+			}
+				
+			
+		}	senao se(ordenacao == 1){
+				para (inteiro i = contador; i >= 0; i--){
+					se(produto[i] != ""){
+						escreva("Produto informado: "+ i + " - " +produto[i]+ pulaLinha)
+					}
+				}
+			}
+	}
+
+
+		
+		
+	}
