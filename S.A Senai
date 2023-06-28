@@ -1,56 +1,97 @@
 programa
 {	
+	inclua biblioteca Calendario
+	const cadeia banco_login = "ADM", banco_senha = "ADM"
 
 	//--Variáveis globais
 	inteiro contador = 0, contador2 = 0
 	cadeia produto[999]
 	cadeia pular = "\n"
 	cadeia classificacaoProduto[999]
-	funcao inicio()
-	{
+	inteiro hora , minuto
+
+	
+	funcao inicio(){
+
+		logico resultado = falso
 		inteiro acao 
+		resultado = login()
+		
+		se(resultado){
+			escreva("\nSeja bem-vindo!")
+
+			faca{
+			//--Chama função para imprimir
+				ImprimeMenu()
+				
+				//--Ler a ação
+				leia(acao)
+	
+				escolha(acao){
+					caso 1:
+					 	Inserir()
+					 	pare
+					 caso 2:
+					 	Atualizar()
+					 	pare
+					 caso 3:
+					 	Excluir()
+					 	pare
+					 caso 4:
+					 	Exibir("")
+					 	pare
+					 caso 5:
+					 	ImprimirOrdem()
+					 	pare
+					 caso 6:
+					 	ImprimirClassificacao()
+					 	pare
+					 caso 9:
+					 	escreva(pular + "programa encerrado!")
+					 	pare	 			 	
+				}
+
+			}enquanto(acao != 9)
+				
+		} senao{
+			escreva("\nLogin/Senha inválido")
+		}
+	}
+	
+	funcao logico login(){
+		
+		cadeia login, senha logico resultado = falso
+		
+		escreva("Informe o login:") 
+		leia(login)
+		
+		escreva("Informe a senha:")
+		leia(senha)
+		
+		se(banco_login == login e banco_senha == senha){
+			resultado = verdadeiro
+			
+		}
+		retorne resultado
+	
+	
 
 		//--Estrutura de repetição principal
-		faca{
-			//--Chama função para imprimir
-			ImprimeMenu()
-			
-			//--Ler a ação
-			leia(acao)
-
-			escolha(acao){
-				caso 1:
-				 	Inserir()
-				 	pare
-				 caso 2:
-				 	Atualizar()
-				 	pare
-				 caso 3:
-				 	Excluir()
-				 	pare
-				 caso 4:
-				 	Exibir("")
-				 	pare
-				 caso 5:
-				 	ImprimirOrdem()
-				 	pare
-				 caso 9:
-				 	escreva(pular + "programa encerrado!")
-				 	pare	 			 	
-			}
-
-		}enquanto(acao != 9)		
+		
 	}
 
 	funcao ImprimeMenu(){
 		
 		escreva(pular + pular + "***** MENU *****   " + pular)
-		escreva("1 - Inserir        " + pular)
-		escreva("2 - Atualizar      " + pular)
-		escreva("3 - Excluir        " + pular)
-		escreva("4 - Exibir         " + pular)
-		escreva("5 - ImprimirOrdem  " + pular)
-		escreva("9 - Encerrar 	   " + pular)
+		escreva("1 - Inserir produto" + pular)
+		escreva("2 - Atualizar produto" + pular)
+		escreva("3 - Excluir produto" + pular)
+		escreva("4 - Exibir produto" + pular)
+		escreva("5 - Imprimir produtos por ordem" + pular)
+		escreva("6 - Imprimir produtos por classificação" + pular)
+		escreva("7 - Adicionar estoque" + pular)
+		escreva("8 - Remover estoque" + pular)
+		escreva("9 - Encerrar" + pular)
 	}
 
 	funcao Inserir(){
@@ -71,20 +112,23 @@ programa
 		contador += 1
 
 		faca{
-			escreva("Informe a classifcação do produto: ")
+			
+			escreva("Informe a classificação do produto: ")
 			leia(classificacao)
 			
-			se (classificacao == ""){
+			se (classificacao == "" ou classificacao != "A" e classificacao != "B" e classificacao != "C" ){
 				escreva("Classificação do produto inválido!" + pular)
 			}				
-		} enquanto(classificacao == "")
-
+		} enquanto(classificacao == "" ou classificacao != "A" e classificacao != "B" e classificacao != "C" )
 		classificacaoProduto[contador2] = classificacao
 		contador2 += 1
 			
 	}
 
 	funcao Exibir(cadeia ordem){
+
+		hora = Calendario.hora_atual(falso)
+        	minuto = Calendario.minuto_atual()
 
 		se (ordem == "D"){
 			para (inteiro i = contador; i >= 0; i--){
@@ -102,8 +146,16 @@ programa
 		para (inteiro i = 0; i < contador; i++){
 			se(classificacaoProduto[i] != ""){
 				escreva("Classificação do produto(" + i +"): " + classificacaoProduto[i] + pular)
+				
 			}
+
+
+			
+			
 		}
+	
+
+			
 	}
 
 	funcao Atualizar(){
@@ -157,6 +209,21 @@ programa
 
 		Exibir(ordem)
 		
+	}
+
+	funcao ImprimirClassificacao(){
+		cadeia ordemClassificacao
+		
+		escreva("Informe qual Classificação: ")
+		leia(ordemClassificacao)
+		
+	para (inteiro i = 0; i < contador; i++){
+				se(classificacaoProduto[i] == ordemClassificacao){
+					escreva("\nOrdem do produto(" + i +") "+produto[i]+ " : " + classificacaoProduto[i] + pular)
+				}	
+			
+			}
+
 	}
 }
 /* $$$ Portugol Studio $$$ 
