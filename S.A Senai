@@ -46,6 +46,12 @@ programa
 					 caso 6:
 					 	ImprimirClassificacao()
 					 	pare
+					 caso 7:
+					 	AdicionarEstoque()
+					 	pare
+					 caso 8:
+					 	ExcluirEstoque()
+					 	pare
 					 caso 9:
 					 	escreva(pular + "programa encerrado!")
 					 	pare	 			 	
@@ -224,6 +230,14 @@ programa
 			
 			}
 
+	}
+
+	funcao AdicionarEstoque(){
+		
+	}
+
+	funcao ExcluirEstoque(){
+		
 	}
 }
 /* $$$ Portugol Studio $$$ 
