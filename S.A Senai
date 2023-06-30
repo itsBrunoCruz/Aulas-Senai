@@ -8,6 +8,8 @@ programa
 	cadeia produto[999]
 	cadeia pular = "\n"
 	cadeia classificacaoProduto[999]
+	inteiro produtoEstoque[999]
+	inteiro quantidadeEstoque[999]
 	inteiro hora , minuto
 
 	
@@ -233,8 +235,46 @@ programa
 	}
 
 	funcao AdicionarEstoque(){
+		inteiro indiceEstoque = 0
+		inteiro quantidadeEstoque = 0
 		
+		escreva("***** Produtos Disponíveis *****")
+		para (inteiro i = 0; i < contador; i++){
+				se (produto[i] != ""){
+					escreva(pular+"Produtos (" + i +"): " + produto[i] +" Quantidade: "+produtoEstoque[i])
+				}
+
+				
+			}
+			
+			escreva(pular + "Informe o indice")
+			leia(indiceEstoque)
+
+			
+		 se (indiceEstoque >= contador){
+		 	escreva("Indice inválido")
+		 
+		 }senao{
+		 	
+		escreva("Informe a quantidade")
+		leia(quantidadeEstoque)
+		 }
+		se(quantidadeEstoque > 0){
+			
+		
+			produtoEstoque[indiceEstoque] = quantidadeEstoque
+			escreva("quantidade: "+quantidadeEstoque)
+			
+			
+		}senao{
+			escreva("quantidade inválida")
+		}
 	}
+
+	
+		
+			
+	
 
 	funcao ExcluirEstoque(){
 		
