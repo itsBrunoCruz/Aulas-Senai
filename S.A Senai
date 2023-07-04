@@ -9,10 +9,8 @@ programa
 	cadeia pular = "\n"
 	cadeia classificacaoProduto[999]
 	inteiro produtoEstoque[999]
-	inteiro quantidadeEstoque[999]
 	inteiro hora , minuto
 
-	
 	funcao inicio(){
 
 		logico resultado = falso
@@ -82,8 +80,6 @@ programa
 		}
 		retorne resultado
 	
-	
-
 		//--Estrutura de repetição principal
 		
 	}
@@ -135,9 +131,6 @@ programa
 
 	funcao Exibir(cadeia ordem){
 
-		hora = Calendario.hora_atual(falso)
-        	minuto = Calendario.minuto_atual()
-
 		se (ordem == "D"){
 			para (inteiro i = contador; i >= 0; i--){
 				se (produto[i] != ""){
@@ -155,19 +148,12 @@ programa
 			se(classificacaoProduto[i] != ""){
 				escreva("Classificação do produto(" + i +"): " + classificacaoProduto[i] + pular)
 				
-			}
-
-
-			
-			
-		}
-	
-
-			
+			}	
+		}	
 	}
 
 	funcao Atualizar(){
-
+		
 		inteiro indice
 		cadeia descricao
 
@@ -225,13 +211,11 @@ programa
 		escreva("Informe qual Classificação: ")
 		leia(ordemClassificacao)
 		
-	para (inteiro i = 0; i < contador; i++){
-				se(classificacaoProduto[i] == ordemClassificacao){
-					escreva("\nOrdem do produto(" + i +") "+produto[i]+ " : " + classificacaoProduto[i] + pular)
-				}	
-			
-			}
-
+		para (inteiro i = 0; i < contador; i++){
+			se(classificacaoProduto[i] == ordemClassificacao){
+				escreva("\nOrdem do produto(" + i +") "+produto[i]+ " : " + classificacaoProduto[i] + pular)
+			}	
+		}
 	}
 
 	funcao AdicionarEstoque(){
@@ -240,54 +224,64 @@ programa
 		
 		escreva("***** Produtos Disponíveis *****")
 		para (inteiro i = 0; i < contador; i++){
-				se (produto[i] != ""){
-					escreva(pular+"Produtos (" + i +"): " + produto[i] +" Quantidade: "+produtoEstoque[i])
-				}
-
-				
-			}
+			se (produto[i] != ""){
+				escreva(pular+"Produtos (" + i +"): " + produto[i] +" Quantidade: "+produtoEstoque[i])
+			}		
+		}
 			
-			escreva(pular + "Informe o indice")
-			leia(indiceEstoque)
+		escreva(pular + "Informe o indice")
+		leia(indiceEstoque)
 
 			
 		 se (indiceEstoque >= contador){
 		 	escreva("Indice inválido")
-		 
-		 }senao{
-		 	
-		escreva("Informe a quantidade")
-		leia(quantidadeEstoque)
 		 }
+		 senao{
+			escreva("Informe a quantidade")
+			leia(quantidadeEstoque)
+		 }
+		 
 		se(quantidadeEstoque > 0){
-			
-		
-			produtoEstoque[indiceEstoque] = quantidadeEstoque
-			escreva("quantidade: "+quantidadeEstoque)
-			
-			
-		}senao{
+			produtoEstoque[indiceEstoque] = quantidadeEstoque + produtoEstoque[indiceEstoque]
+			escreva("quantidade: "+quantidadeEstoque)	
+		}
+		senao{
 			escreva("quantidade inválida")
 		}
 	}
 
-	
-		
-			
-	
 
 	funcao ExcluirEstoque(){
-		
+		inteiro indiceEstoque = 0
+		inteiro reducaoEstoque = 0
+
+		escreva("***** Produtos Disponíveis *****")
+		para (inteiro i = 0; i < contador; i++){
+			se (produto[i] != ""){
+				escreva(pular+"Produtos (" + i +"): " + produto[i] +" Quantidade: "+produtoEstoque[i])
+			}
+
+				
+		}
+
+		escreva(pular + "Informe o indice")
+		leia(indiceEstoque)
+
+		se (indiceEstoque >= contador){
+		 	escreva("Indice inválido")
+		 
+		 }
+		 senao{
+			escreva("Informe a quantidade")
+			leia(reducaoEstoque)
+
+			se(reducaoEstoque > 0){
+				produtoEstoque[indiceEstoque] = produtoEstoque[indiceEstoque] -  reducaoEstoque
+				escreva("quantidade: "+reducaoEstoque)			
+			}
+			senao{
+				escreva("quantidade inválida")
+			}
+		 }
 	}
 }
-/* $$$ Portugol Studio $$$ 
- * 
- * Esta seção do arquivo guarda informações do Portugol Studio.
- * Você pode apagá-la se estiver utilizando outro editor.
- * 
- * @POSICAO-CURSOR = 1262; 
- * @PONTOS-DE-PARADA = ;
- * @SIMBOLOS-INSPECIONADOS = ;
- * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
- * @FILTRO-ARVORE-TIPOS-DE-SIMBOLO = variavel, vetor, matriz, funcao;
- */
