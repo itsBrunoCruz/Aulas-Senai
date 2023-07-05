@@ -1,6 +1,5 @@
 programa
 {	
-	inclua biblioteca Calendario
 	const cadeia banco_login = "ADM", banco_senha = "ADM"
 
 	//--Variáveis globais
@@ -9,7 +8,6 @@ programa
 	cadeia pular = "\n"
 	cadeia classificacaoProduto[999]
 	inteiro produtoEstoque[999]
-	inteiro hora , minuto
 
 	funcao inicio(){
 
@@ -53,25 +51,24 @@ programa
 					 	ExcluirEstoque()
 					 	pare
 					 caso 9:
-					 	escreva(pular + "programa encerrado!")
+					 	escreva(pular + "Programa finalizado!")
 					 	pare	 			 	
 				}
 
 			}enquanto(acao != 9)
 				
 		} senao{
-			escreva("\nLogin/Senha inválido")
+			escreva("\nLogin/Senha inválido!")
 		}
 	}
 	
 	funcao logico login(){
-		
 		cadeia login, senha logico resultado = falso
 		
-		escreva("Informe o login:") 
+		escreva("Informe o login: ") 
 		leia(login)
 		
-		escreva("Informe a senha:")
+		escreva("Informe a senha: ")
 		leia(senha)
 		
 		se(banco_login == login e banco_senha == senha){
@@ -79,13 +76,9 @@ programa
 			
 		}
 		retorne resultado
-	
-		//--Estrutura de repetição principal
-		
 	}
 
 	funcao ImprimeMenu(){
-		
 		escreva(pular + pular + "***** MENU *****   " + pular)
 		escreva("1 - Inserir produto" + pular)
 		escreva("2 - Atualizar produto" + pular)
@@ -99,7 +92,6 @@ programa
 	}
 
 	funcao Inserir(){
-
 		cadeia nomeProduto = ""
 		cadeia classificacao = ""
 
@@ -147,18 +139,16 @@ programa
 		para (inteiro i = 0; i < contador; i++){
 			se(classificacaoProduto[i] != ""){
 				escreva("Classificação do produto(" + i +"): " + classificacaoProduto[i] + pular)
-				
 			}	
 		}	
 	}
 
 	funcao Atualizar(){
-		
 		inteiro indice
 		cadeia descricao
 
 		faca{
-			escreva(pular + "Informe o indice desejado: ")
+			escreva(pular + "Informe o índice desejado: ")
 			leia(indice)
 		} enquanto (indice >= contador)
 
@@ -173,18 +163,17 @@ programa
 	}
 
 	funcao Excluir(){
-
 		inteiro indice = 0
 
 		faca{
-			escreva(pular + "Informe o indice a ser excluido: ")
+			escreva(pular + "Informe o índice a ser excluido: ")
 			leia(indice)
 		} enquanto (indice >= contador)
 		
 		produto[indice] = ""
 		
 		faca{
-			escreva(pular + "Informe o indice da classificação a ser excluido: ")
+			escreva(pular + "Informe o índice da classificação a ser excluido: ")
 			leia(indice)
 		} enquanto (indice >= contador)
 		
@@ -193,7 +182,6 @@ programa
 	}
 
 	funcao ImprimirOrdem(){
-
 		cadeia ordem = "" 
 		//- C = crescente
 		//- D = decrecente
@@ -202,13 +190,12 @@ programa
 		leia(ordem)
 
 		Exibir(ordem)
-		
 	}
 
 	funcao ImprimirClassificacao(){
 		cadeia ordemClassificacao
 		
-		escreva("Informe qual Classificação: ")
+		escreva("Informe qual a classificação (A, B ou C): ")
 		leia(ordemClassificacao)
 		
 		para (inteiro i = 0; i < contador; i++){
@@ -229,25 +216,22 @@ programa
 			}		
 		}
 			
-		escreva(pular + "Informe o indice")
+		escreva(pular + "Informe o índice: ")
 		leia(indiceEstoque)
-
-			
+	
 		 se (indiceEstoque >= contador){
 		 	escreva("Indice inválido")
+		 } senao{
+			 faca{
+		 		escreva("Informe a quantidade: ")
+				leia(quantidadeEstoque)
+				produtoEstoque[indiceEstoque] = quantidadeEstoque + produtoEstoque[indiceEstoque]
+				se (quantidadeEstoque <= 0){
+					escreva("Quantidade inválida!" + pular)
+				}	
+							
+			 }enquanto(quantidadeEstoque <= 0)	
 		 }
-		 senao{
-			escreva("Informe a quantidade")
-			leia(quantidadeEstoque)
-		 }
-		 
-		se(quantidadeEstoque > 0){
-			produtoEstoque[indiceEstoque] = quantidadeEstoque + produtoEstoque[indiceEstoque]
-			escreva("quantidade: "+quantidadeEstoque)	
-		}
-		senao{
-			escreva("quantidade inválida")
-		}
 	}
 
 
@@ -259,29 +243,26 @@ programa
 		para (inteiro i = 0; i < contador; i++){
 			se (produto[i] != ""){
 				escreva(pular+"Produtos (" + i +"): " + produto[i] +" Quantidade: "+produtoEstoque[i])
-			}
-
-				
+			}	
 		}
 
-		escreva(pular + "Informe o indice")
+		escreva(pular + "Informe o índice: ")
 		leia(indiceEstoque)
 
 		se (indiceEstoque >= contador){
-		 	escreva("Indice inválido")
+		 	escreva("Índice inválido!")
 		 
-		 }
-		 senao{
-			escreva("Informe a quantidade")
-			leia(reducaoEstoque)
+		 } senao{
+		 	faca{
+				escreva("Informe a quantidade: ")
+				leia(reducaoEstoque)
+				produtoEstoque[indiceEstoque] = produtoEstoque[indiceEstoque] -  reducaoEstoque	
+			
+				se(reducaoEstoque <= 0){
+					escreva("Quantidade inválida!"+pular)
+				}
 
-			se(reducaoEstoque > 0){
-				produtoEstoque[indiceEstoque] = produtoEstoque[indiceEstoque] -  reducaoEstoque
-				escreva("quantidade: "+reducaoEstoque)			
-			}
-			senao{
-				escreva("quantidade inválida")
-			}
-		 }
+			}enquanto(reducaoEstoque <= 0)	
+		}
 	}
 }
