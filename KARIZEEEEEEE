@@ -1,0 +1,154 @@
+Bruno
+
+-------------------------------------------DO WHILE------------------------------------------------
+/*Desenvolva um aplicativo onde o usuário deve criar uma senha
+para futuramente efetuar um "login" enquanto a senha estiver errada 
+o sistema pede para o usuário digitar a senha e se a senha for igual
+a que ele criou o sistema exibe uma mensagem de bem vindo*/
+package revisaoprimeirosemestre;
+
+import javax.swing.JOptionPane;
+
+public class DoWhile {
+
+    public static void main(String[] args) {
+        //Inicia uma variável com nome senha e pede para o usuário criar uma senha
+        String senha = JOptionPane.showInputDialog("Criar senhar ");
+        //Inicia uma variável do tipo String com vazio
+        String senhaDigitada = "";
+
+        /*Estrutura de repetição onde se a senha for diferente
+        da senha criada o sistema pede para informar a senha até
+        ser a senha correta*/
+        do {
+            //Pede para o usuário digitar a senha
+            senhaDigitada = JOptionPane.showInputDialog("Digite a senha ");
+            //Valida se a senha é igual
+        } while (!senhaDigitada.equals(senha));
+
+        //Impressão da mensagem de bem vindo
+        JOptionPane.showMessageDialog(null, "Seja Bem Vindo!");
+
+    }
+}
+-----------------------------------------------------------------------------------------------------
+
+---------------------------------WHILE----------------------------------------
+/*Desenvolva um aplicativo onde o sistema pede que o usuário
+informe um valor maior que zero e caso o número seja menor ou
+igual a zero ele apresenta uma mensagem de erro e pede
+para o usuário informar o número novamente e por fim 
+exibe o valor digitado e o número de tentativas*/
+package revisaoprimeirosemestre;
+
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+
+public class While {
+
+    public static void main(String[] args) {
+        //Variáveis
+        int valor = 0;
+        int contador = 0;
+
+        //Estrutura de repetição que caso o número seja menor ou igual a zero pede para informar um número novamente
+        while (valor <= 0) {
+            //Pede para o usuário informar um número
+            String input = JOptionPane.showInputDialog("Informe um valor maior que zero:");
+            //Converte a variável para Inteiro
+            valor = Integer.parseInt(input);
+
+            //Estrutura de decisão onde é validado se o número é menor ou igual a zero
+            if (valor <= 0) {
+                JOptionPane.showMessageDialog(null, "O valor deve ser maior que zero. Tente novamente.");
+            }
+
+            //Contador utilizado para exibir o número de tentativas
+            contador++;
+
+        }
+        //Exibe a mensagem final
+        JOptionPane.showMessageDialog(null, "O valor informado é: " + valor + "\nNúmero de tentativas: " + contador);
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Ivanir
+
+package revisao_2semestre;
+
+import javax.swing.JOptionPane;
+
+/* Desemvolver 5 situações problrmas que devem ser resolvidos utilizando propriedades de logica.
+* Para solução das situações problemas é necessário a utilização dos seguintes conteudos
+* IF / ELSE / IF ELSE
+* FOR / FOR EACH
+* WHILE / DO WHILE
+* SWITCH
+* VETOR / LISTA
+
+Criar situação problema e a sua solução.
+Criar um documento formatado com:
+Fonte: Arial ou Times new roman
+Tam: 12
+texto: justificado  cada situação enumerada
+*/
+public class Revisao_2semestre_IF_ELSE {
+
+/*/ Situação problema: Verificar se a pessoa é de menor, maior ou idoso.
+(menor de idade), até 17 anos;
+(maior de idade), entre 18 e 64 anos;
+//*(Idoso), igual ou maior que 65 anos.
+
+    public static void main(String[] args) {
+        
+        //variaveis:
+        int idade;
+        String mensage ="";
+        
+        //dado informado pelo usuario:
+        idade = Integer.parseInt(JOptionPane.showInputDialog("Informe a idade:"));
+        
+        //estrutura de decisão com a condição:
+        if (idade <18){
+            mensage = "menor de idade";
+        }else if(idade >= 18 && idade <= 64){
+            mensage = "maior de idade";
+        }else{
+            mensage = "Idoso";
+        }
+        //impressão das informações:
+        JOptionPane.showMessageDialog(null, mensage);
+    }   
+}
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+Nicolas
+
+package napaz;
+
+import javax.swing.JOptionPane;
+
+public class vetor {
+
+    public static void main(String[] args) {
+        //Declarações das variáveis
+        int vetor[] = new int[5];
+        //Aqui entramos no laço de repetição até alcançar o número de valores desejados
+        for (int i = 0; i <= 4; i++) {
+            //Aqui pedimos para o usuario adicionar os valores
+            //Adicionamos os valores para a variavel vetor[i]
+            vetor[i] = Integer.parseInt(JOptionPane.showInputDialog("Informe os valores: "));
+        }
+        //Aqui entramos em outro laço de repetição
+        for (int k = 0; k <= 4; k++) {
+            //Aqui imprimimos os valores que foram enceridos
+            JOptionPane.showMessageDialog(null, "Esses são os valores: " + vetor[k]);
+           
+            //FIM DO PROGRAMA
+        }
+    }
+}
