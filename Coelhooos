@@ -1,0 +1,45 @@
+Você é um cientista pesquisando uma população de coelhos em uma ilha isolada.
+Inicialmente, existem 50 coelhos na ilha. A cada mês, o número de coelhos na ilha aumenta significativamente (DOBRA),
+pois eles se reproduzem rapidamente. No entanto, a ilha tem recursos limitados e pode suportar apenas um certo 
+número de coelhos.(Usuário define a capacidade Máxima e quantos coelhos morrem).
+
+Calcule em quantos meses a ilha atingirá a capacidade máxima, e também o excedente de coelhos.
+
+ public static void main(String[] args) {
+        //Variáveis Constantes
+        int populacaoInicial = 50;
+
+        // Variáveis 
+        //Pede a capacidade máxima da ilha
+        int capacidadeMaxima = Integer.parseInt(JOptionPane.showInputDialog("Estipule a capacidade máxima da ilha"));
+        //Pede a quantidade de mortes de coelhos
+        int mortesCoelhos = Integer.parseInt(JOptionPane.showInputDialog("Quantos coelhos morreram?!"));
+        //Subtração da populacão inicial com a quantidade de coelhos mortos informados
+        populacaoInicial -= mortesCoelhos;
+        int meses = 0;
+        String op = "S";
+        int excedentes = 0;
+
+        //Estrutura de repetição para calcular quantos meses leva para atingir a capacidade máxima
+        do {
+            //Estrutura de decisão
+            if (populacaoInicial * 2 <= capacidadeMaxima) {
+                populacaoInicial *= 2;
+                System.out.println("população:  " + populacaoInicial);
+                meses++;
+
+            } else {
+                op = "N";
+                //Calcula a quantidade de excedentes de coelhos
+                excedentes = populacaoInicial * 2 - capacidadeMaxima;
+
+            }
+        } while (op.equals("S"));
+
+        //Saida
+        JOptionPane.showMessageDialog(null, "A população de coelhos na ilha excederá a capacidade máxima após " + meses + " meses."
+                + "\nMortes de coelhos: " + mortesCoelhos
+                + "\nExcedentes de coelhos: " + excedentes);
+    }
+
+}
